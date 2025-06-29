@@ -7,7 +7,7 @@
   "Ciao, mi chiamo Jaimin Kundal.", // Italian
   "こんにちは、私の名前はジャイミン・クンダル です。", // Japanese (Jaimin Kundal in Katakana would be ジャイミン・クンダル)
   "Привет, меня зовут Джаймин Кундал.", // Russian (Джаймин Кундал)
-  "नमस्ते, मेरा नाम जैमिन कुंडल है।", // Hindi (जैमिन कुंडल)
+  "नमस्ते, मैं जैमिन कुंडल हूँ।", // Hindi (जैमिन कुंडल)
   "Olá, meu nome é Jaimin Kundal.", // Portuguese
   "안녕하세요, 제 이름은 자이민 쿤달입니다.", // Korean (자이민 쿤달)
   "你好，我叫贾伊明·昆达尔。", // Chinese (贾伊明·昆达尔)
@@ -15,7 +15,7 @@
   "Hej, jag heter Jaimin Kundal.", // Swedish
   "Merhaba, benim adım Jaimin Kundal.", // Turkish
   "Γεια, με λένε Τζάιμιν Κουντάλ.", // Greek (Τζάιμιν Κουντάλ)
-  "નમસ્તે, મારું નામ જૈમિન કુંડલ છે."
+  "નમસ્તે, હું જૈમીન કુંડલ છું."
     ];
 
     document.addEventListener("DOMContentLoaded", function() {
