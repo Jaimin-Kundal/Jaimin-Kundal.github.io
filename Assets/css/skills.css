@@ -1,0 +1,263 @@
+:root {
+  --yellow: #ffd86b;
+  --purple-dark: #1a0536;
+  --purple-light: #72026c;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Fira Mono', monospace;
+  background: linear-gradient(120deg, #1a0536 0%, #3a0ca3 40%, #72026c 70%, #0a2647 100%);
+  color: #fff;
+  overflow-x: hidden;
+  position: relative;
+}
+/* --- Animated Background --- */
+.gradient-background {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.gradient-sphere {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+}
+.sphere-1 {
+  width: 40vw; height: 40vw;
+  background: linear-gradient(40deg, rgba(255, 0, 128, 0.8), rgba(255, 102, 0, 0.4));
+  top: -10%; left: -10%;
+  animation: float-1 15s ease-in-out infinite alternate;
+}
+.sphere-2 {
+  width: 45vw; height: 45vw;
+  background: linear-gradient(240deg, rgba(72, 0, 255, 0.8), rgba(0, 183, 255, 0.4));
+  bottom: -20%; right: -10%;
+  animation: float-2 18s ease-in-out infinite alternate;
+}
+.sphere-3 {
+  width: 30vw; height: 30vw;
+  background: linear-gradient(120deg, rgba(133, 89, 255, 0.5), rgba(98, 216, 249, 0.3));
+  top: 60%; left: 20%;
+  animation: float-3 20s ease-in-out infinite alternate;
+}
+@keyframes float-1 {
+  0% { transform: translate(0, 0) scale(1);}
+  100% { transform: translate(10%, 10%) scale(1.1);}
+}
+@keyframes float-2 {
+  0% { transform: translate(0, 0) scale(1);}
+  100% { transform: translate(-10%, -5%) scale(1.15);}
+}
+@keyframes float-3 {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.3;}
+  100% { transform: translate(-5%, 10%) scale(1.05); opacity: 0.6;}
+}
+.noise-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  opacity: 0.05;
+  z-index: 2;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+.grid-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  z-index: 1;
+}
+.glow {
+  position: absolute;
+  width: 40vw; height: 40vh;
+  background: radial-gradient(circle, rgba(72, 0, 255, 0.15), transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  animation: pulse 8s infinite alternate;
+  filter: blur(30px);
+}
+@keyframes pulse {
+  0% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.9);}
+  100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.1);}
+}
+.particles-container {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: 3;
+  pointer-events: none;
+}
+.particle {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+/* --- Navbar --- */
+nav {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding: 2.5em 0 1em 0;
+  background: none;
+  transition: opacity 0.5s cubic-bezier(.4,0,.2,1), transform 0.5s cubic-bezier(.4,0,.2,1);
+  will-change: opacity, transform;
+}
+nav.nav-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-40px);
+}
+.navbar-gradient {
+  display: flex;
+  gap: 2.5em;
+}
+.navbar-gradient a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.13em;
+  letter-spacing: 1px;
+  position: relative;
+  opacity: 0.92;
+  transition: 
+    color 0.22s cubic-bezier(.4,0,.2,1), 
+    opacity 0.2s, 
+    text-shadow 0.3s cubic-bezier(.4,0,.2,1);
+  padding: 0.32em 1.1em;
+  border-radius: 10px;
+  background: none;
+  box-shadow: none;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.22em;
+}
+.nav-hash {
+  color: #ffd86b;
+  transition: color 0.22s cubic-bezier(.4,0,.2,1);
+  font-weight: 900;
+}
+.navbar-gradient a:hover,
+.navbar-gradient a:focus {
+  color: #ffd86b;
+  opacity: 1;
+  text-shadow:
+    0 0 10px #ffd86b,
+    0 0 20px #ffd86b99;
+}
+.navbar-gradient a:hover .nav-hash,
+.navbar-gradient a:focus .nav-hash {
+  color: #fff;
+  text-shadow:
+    0 0 10px #fff,
+    0 0 20px #ffd86b99;
+}
+@media (max-width: 600px) {
+  nav { padding: 1.1em 0 0.7em 0; }
+  .navbar-gradient { gap: 1.2em; }
+}
+/* --- Skills page content --- */
+main {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 3em 5vw 5em 5vw;
+  position: relative;
+  z-index: 10;
+}
+h1 {
+  font-size: 2.5em;
+  color: var(--yellow);
+  margin-bottom: 0.3em;
+}
+.filter-bar {
+  display: flex;
+  gap: 0.8em;
+  flex-wrap: wrap;
+  margin: 2em 0 3em 0;
+}
+.filter-btn {
+  padding: 0.4em 1.2em;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid transparent;
+  border-radius: 30px;
+  color: var(--yellow);
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  transition: background 0.25s, border 0.25s;
+}
+.filter-btn.active, .filter-btn:hover {
+  background: var(--yellow);
+  color: #2a5298;
+  border: 1px solid var(--yellow);
+}
+.skills-grid {
+  display: grid;
+  gap: 2em;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+.skill-card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 15px;
+  padding: 1.5em 1.5em 2em 1.5em;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.skill-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+}
+.skill-title {
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-bottom: 0.8em;
+  display: flex;
+  align-items: center;
+  gap: 0.45em;
+}
+.skill-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 0.8em;
+}
+.skill-level {
+  height: 100%;
+  background: var(--yellow);
+  width: 0;
+  border-radius: 4px;
+  transition: width 1.4s cubic-bezier(.4,0,.2,1);
+}
+.skill-card.visible .skill-level {
+  width: var(--level);
+}
+.corner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, transparent 50%, rgba(255,255,255,0.09) 50%);
+}
+@media (max-width: 600px) {
+  h1 { font-size: 1.7em; }
+  .filter-bar { margin: 1.5em 0 2.2em 0; }
+}
