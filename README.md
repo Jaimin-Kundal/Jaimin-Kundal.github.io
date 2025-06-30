@@ -16,5 +16,3 @@ This is my personal portfolio website, designed with particle effects. The site 
 - JavaScript (interactive effects, particle animations)
 - Responsive design techniques
 
-# Jaimin-Kundal.github.io
-# Jaimin-Kundal.github.io
