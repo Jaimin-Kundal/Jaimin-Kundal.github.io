@@ -37,7 +37,7 @@
       // Create a temporary link to download resume
       // In real implementation, this would link to an actual PDF file
       const link = document.createElement('a');
-      link.href = 'https://drive.google.com/file/d/17VtwH1lmI-Qr5E__2-Bcs4eMsslPkkCx/view?usp=sharing'; // Replace with actual resume file path
+      link.href = 'https://drive.google.com/file/d/10RumqMjqYk4Fm2a55OG3AC3kmDwDyr_R/view?usp=sharing'; // Replace with actual resume file path
       link.download = 'Jaimin_Kundal_Resume.pdf';
 
 
